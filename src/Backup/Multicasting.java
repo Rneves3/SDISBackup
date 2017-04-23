@@ -9,21 +9,20 @@ import java.net.UnknownHostException;
 
 public class Multicasting {
 	
+	private String msg;
+	public MulticastSocket mcSocket, mdbSocket, mdrSocket;
 	
 	
-	public Multicasting(int Port, String Address, String Msg){
+	public void mcMulticast(int Port, InetAddress Address){
 		
-		MulticastSocket Socket = null;
-		InetAddress mcAddress = null;
 		try {
-			mcAddress = InetAddress.getByName(Address);
 		} catch (UnknownHostException e) {
 			System.out.println("Error while obtaining hosts Address \n");
 			e.printStackTrace();
 		}
 		
 		try {
-			Socket = new MulticastSocket(Port);
+			mcSocket = new MulticastSocket(Port);
 		} catch (IOException e) {
 			System.out.println("Error while obtaining port \n");
 			e.printStackTrace();
@@ -31,13 +30,64 @@ public class Multicasting {
 		
 		System.out.println("At : " + Socket.getLocalSocketAddress());
 		try {
-			Socket.joinGroup(mcAddress);
+			mcSocket.joinGroup(Address);
 		} catch (IOException e) {
 			System.out.println("Error while joining multicast group! \n");
 			e.printStackTrace();
 		}
 		
 		
+		
+	}
+	
+	public void mdbMulticast(int Port, InetAddress){
+		
+		try {
+		} catch (UnknownHostException e) {
+			System.out.println("Error while obtaining hosts Address \n");
+			e.printStackTrace();
+		}
+		
+		try {
+			mdbSocket = new MulticastSocket(Port);
+		} catch (IOException e) {
+			System.out.println("Error while obtaining port \n");
+			e.printStackTrace();
+		}
+		
+		System.out.println("At : " + Socket.getLocalSocketAddress());
+		try {
+			mdbSocket.joinGroup(Address);
+		} catch (IOException e) {
+			System.out.println("Error while joining multicast group! \n");
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public void mdrMulticast(int Port, InetAddress){
+		
+		try {
+		} catch (UnknownHostException e) {
+			System.out.println("Error while obtaining hosts Address \n");
+			e.printStackTrace();
+		}
+		
+		try {
+			mdrSocket = new MulticastSocket(Port);
+		} catch (IOException e) {
+			System.out.println("Error while obtaining port \n");
+			e.printStackTrace();
+		}
+		
+		System.out.println("At : " + Socket.getLocalSocketAddress());
+		try {
+			mdrSocket.joinGroup(Address);
+		} catch (IOException e) {
+			System.out.println("Error while joining multicast group! \n");
+			e.printStackTrace();
+		}
 		
 	}
 

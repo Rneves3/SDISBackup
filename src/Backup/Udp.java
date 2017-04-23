@@ -1,12 +1,13 @@
 package Backup;
 
-public class main {
+public class  Udp{
 	
 	
 	public static void main(String[] args){
 		
-		
-		int CRLF = 0xDA;
+		Multicasting MC, MDB, MDR;
+		Char CR = '\r';
+		Char LF = '\n';
 		String msg;
 		char space = ' ';
 		int iD;
